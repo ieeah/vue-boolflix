@@ -4,7 +4,7 @@
 			<h1>boolflix</h1>
 		</a>
 		<div class="search-bar">
-			<input type="text" v-model="lookFor" @keyup.enter="$emit('startSearching', lookFor), clearSearchBar()">
+			<input type="text" v-model="lookFor" placeholder="Cerca un film" @keyup.enter="$emit('startSearching', lookFor), clearSearchBar()">
 			<div class="btn" @click="$emit('startSearching', lookFor), clearSearchBar()">
 				<i class="fas fa-search"></i>
 				Search
