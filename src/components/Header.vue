@@ -3,7 +3,7 @@
 		<h1>boolflix</h1>
 		<div class="search-bar">
 			<input type="text" v-model="lookFor">
-			<div class="btn">
+			<div class="btn" @click="$emit('startSearching', lookFor), clearSearchBar()">
 				<i class="fas fa-search"></i>
 				Search
 			</div>
@@ -18,6 +18,11 @@ export default {
 		return {
 			lookFor: '',
 		};
+	},
+	methods: {
+		clearSearchBar() {
+			this.lookFor = '';
+		},
 	},
 }
 </script>
