@@ -2,7 +2,7 @@
 	<header>
 		<h1>boolflix</h1>
 		<div class="search-bar">
-			<input type="text" v-model="lookFor">
+			<input type="text" v-model="lookFor" @keyup.enter="$emit('startSearching', lookFor), clearSearchBar()">
 			<div class="btn" @click="$emit('startSearching', lookFor), clearSearchBar()">
 				<i class="fas fa-search"></i>
 				Search
@@ -33,7 +33,7 @@ header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-
+		background-color: $secondary-color;
 		.search-bar {
 			width: 30%;
 			height: 100%;

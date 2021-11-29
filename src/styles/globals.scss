@@ -14,7 +14,6 @@ body {
 	line-height: 1.5;
 	background-color: $primary-color;
 	color: $clear-text;
-	padding: $fsz-7;
 	font-size: $fsz-5;
 	font-family: $primary-font;
 }
@@ -31,8 +30,8 @@ body {
 
 main {
 	width: 100%;
-	background-color: red;
 	flex-grow: 1;
+	padding: $fsz-7;
 }
 
 img {
@@ -49,10 +48,10 @@ li {
 	list-style: none;
 }
 
-h1 {
+h1,
+h2 {
 	font-family: 'Bebas Neue', sans-serif;
 	color: $accent-color;
-	font-size: $fsz-1;
 }
 
 .btn {

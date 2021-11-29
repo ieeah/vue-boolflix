@@ -4,8 +4,7 @@
 			<Header @startSearching="performSearch"/>
 		</div>
 		<main>
-			<Body id="Body"/>
-			<!-- :movies="moviesToShow" -->
+			<Body id="Body" :movies="moviesToShow"/>
 		</main>
 	</div>
 </template>
@@ -35,10 +34,9 @@ export default {
 					language: 'it',
 				},
 			})
-			.then(function (response) {
-				// this.moviesToShow.push(response.data.results);
+			.then((response) => {
+				this.moviesToShow = response.data.results;
 				console.log(this.moviesToShow);
-				console.log(response.data.results);
 			})
 			.catch(function (error) {
 				// handle error
