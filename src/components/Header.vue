@@ -1,6 +1,8 @@
 <template>
 	<header>
-		<h1>boolflix</h1>
+		<a href="/">
+			<h1>boolflix</h1>
+		</a>
 		<div class="search-bar">
 			<input type="text" v-model="lookFor" @keyup.enter="$emit('startSearching', lookFor), clearSearchBar()">
 			<div class="btn" @click="$emit('startSearching', lookFor), clearSearchBar()">
@@ -34,6 +36,12 @@ header {
 		justify-content: space-between;
 		align-items: center;
 		background-color: $secondary-color;
+		height: 72px;
+		padding: $fsz-7;
+
+		a {
+			text-decoration: none;
+		}
 		.search-bar {
 			width: 30%;
 			height: 100%;
@@ -50,17 +58,18 @@ header {
 				width: 65%;
 				border: none;
 				outline: none;
-				&hover,
-				&active,
-				&focus {
+				position: relative;
+				&:hover,
+				&:active,
+				&:focus {
 					border: none;
-					outline: none;
+					outline: 2px solid $accent-color;
+					outline-offset: 2px;
 				}
 			}
 
 			.btn {
 				width: 25%;
-				height: 100%;
 				background-color: $accent-color;
 				color: $secondary-color;
 				margin-left: 20px;
