@@ -1,0 +1,62 @@
+@import '@/styles/vars.scss';
+@import '@/styles/mixins.scss';
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	line-height: 1.5;
+	background-color: $primary-color;
+	color: $clear-text;
+	padding: $fsz-7;
+	font-size: $fsz-5;
+	font-family: $primary-font;
+}
+
+#Body {
+	width: 100%;
+	height: 100%;
+}
+
+#app {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	width: 100vw;
+	background-color: red;
+	flex-grow: 1;
+}
+
+img {
+	max-width: 100%;
+}
+
+input {
+	font-family: $primary-font;
+	font-size: $fsz-5;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+h1 {
+	font-family: 'Bebas Neue', sans-serif;
+	color: $accent-color;
+	font-size: $fsz-1;
+}
+
+.btn {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: $fsz-6;
+}
