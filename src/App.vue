@@ -5,6 +5,7 @@
 		</div>
 		<main>
 			<Body id="Body"/>
+			<!-- :movies="moviesToShow" -->
 		</main>
 	</div>
 </template>
@@ -22,7 +23,7 @@ export default {
 	},
 	data() {
 		return {
-			lookFor: '',
+			moviesToShow: [],
 		};
 	},
 	methods: {
@@ -31,15 +32,18 @@ export default {
 				params: {
 					api_key: 'ca6604e774b1404964077082d0e1bb94',
 					query: title,
-				}
+					language: 'it',
+				},
 			})
 			.then(function (response) {
-				console.log(response.data);
+				// this.moviesToShow.push(response.data.results);
+				console.log(this.moviesToShow);
+				console.log(response.data.results);
 			})
 			.catch(function (error) {
-			// handle error
-			console.log(error);
-  })
+				// handle error
+				console.log(error);
+			})
 		},
 	},
 }
