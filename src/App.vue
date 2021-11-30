@@ -53,14 +53,11 @@ export default {
 			.then(axios.spread((...responses) => {
 			const responseOne = responses[0]
 			const responseTwo = responses[1]
-			// use/access the results
-			// console.log(responseOne, responseTwo);
 			this.movies = [];
 			this.tvShows = [];
 			this.movies = responseOne.data.results;
 			this.tvShows = responseTwo.data.results;
 			})).catch(errors => {
-			// react on errors.
 			console.log(errors);
 			})
 			this.moviesToShow = [],

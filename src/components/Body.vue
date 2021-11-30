@@ -20,6 +20,7 @@
 				:originalLanguage="movie.original_language"
 				:voteAverage="movie.vote_average"
 				:posterPath="movie.poster_path"
+				:name="movie.name"
 			/>
 		</div>
 
@@ -42,11 +43,11 @@ export default {
 		moviesToShow() {
 			const lista = [];
 			lista.push(...this.movies, ...this.tvShows);
-			lista.forEach(element => {
-				if (element.name != '' || element.name != undefined) {
-					element.title = element.name;
-				}
-			});
+			// lista.forEach(element => {
+			// 	if (element.name != '' || element.name != undefined) {
+			// 		element.title = element.name;
+			// 	}
+			// });
 			return lista ;
 		},
 	},
@@ -108,12 +109,6 @@ export default {
 		.ani2 {
 			animation: 4s ease-in-out infinite scaleup alternate ;
 			animation-delay: 2s;
-		}
-	}
-	.movie {
-		img.flag {
-			width: 50px;
-			height: 30px;
 		}
 	}
 </style>
