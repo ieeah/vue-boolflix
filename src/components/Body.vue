@@ -1,6 +1,6 @@
 <template>
 	<div class="container-full">
-		<div v-if="movies.length == 0" class="loader">
+		<div v-if="moviesToShow.length == 0" class="loader">
 			<h2>Sono pronto a cercare il tuo film!</h2>
 			<div class="loading_animation">
 				<div class="ani1"></div>
@@ -8,9 +8,10 @@
 			</div>
 		</div>
 		<div v-else class="movies_list">
-			<div class="movie" v-for="movie in movies" :key="`${movie.title}`">
-				<h2>{{movie.title}}</h2>
-				<p>{{movie.original_title}}</p>
+			<div class="movie" v-for="movie in moviesToShow" :key="`${movie.title}`">
+				<h2 v-if="movie.title">{{movie.title}}</h2>
+				<h2 v-else> {{movie.name}} </h2>
+				<p v-show="movie.original_title != movie.title">{{movie.original_title}}</p>
 				<p v-if="!flags.includes(movie.original_language)">{{ movie.original_language}}</p>
 				<img v-else :src="require(`@/assets/flags/${movie.original_language}.png`)" alt="">
 				<p>{{movie.vote_average}}</p>
@@ -24,10 +25,19 @@ export default {
 	name: 'Body',
 	props: {
 		movies: Array,
+		tvShows: Array,
+	},
+	computed: {
+		moviesToShow() {
+			const ciao = [];
+			ciao.push(...this.movies, ...this.tvShows);
+			return ciao ;
+		},
 	},
 	data() {
 		return {
 			flags: ['it', 'en'],
+			list: [],
 		};
 	},
 }
