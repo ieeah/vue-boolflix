@@ -1,45 +1,54 @@
 <template>
 	<div class="container-full">
+
+
 		<div v-if="moviesToShow.length == 0" class="loader">
 			<h2>Sono pronto a cercare il tuo film!</h2>
 			<div class="loading_animation">
-				<div class="ani1"></div>
-				<div class="ani2"></div>
+				<div class="ani1">cerca il film</div>
+				<div class="ani2">o la serie</div>
 			</div>
 		</div>
+
+
 		<div v-else class="movies_list">
-			<div class="movie" v-for="movie in moviesToShow" :key="`${movie.title}`">
-				<h2 v-if="movie.title">{{movie.title}}</h2>
-				<h2 v-else> {{movie.name}} </h2>
-				<p v-show="movie.original_title != movie.title">{{movie.original_title}}</p>
-				<p v-if="!flags.includes(movie.original_language)">{{ movie.original_language}}</p>
-				<img class="flag" v-else :src="require(`@/assets/flags/${movie.original_language}.png`)" alt="">
-				<p>{{movie.vote_average}}</p>
-				<img :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`" :alt="movie.title || movie.name">
-			</div>
+			<Movie class="movie"
+				v-for="movie in moviesToShow"
+				:key="`${movie.id}`"
+				:title="movie.title"
+				:originalTitle="movie.original_title"
+				:originalLanguage="movie.original_language"
+				:voteAverage="movie.vote_average"
+				:posterPath="movie.poster_path"
+			/>
 		</div>
+
+
 	</div>
 </template>
 
 <script>
+import Movie from '@/components/Movie.vue';
 export default {
 	name: 'Body',
+	components: {
+		Movie,
+	},
 	props: {
 		movies: Array,
 		tvShows: Array,
 	},
 	computed: {
 		moviesToShow() {
-			const ciao = [];
-			ciao.push(...this.movies, ...this.tvShows);
-			return ciao ;
+			const lista = [];
+			lista.push(...this.movies, ...this.tvShows);
+			lista.forEach(element => {
+				if (element.name != '' || element.name != undefined) {
+					element.title = element.name;
+				}
+			});
+			return lista ;
 		},
-	},
-	data() {
-		return {
-			flags: ['it', 'en'],
-			list: [],
-		};
 	},
 }
 </script>
@@ -53,12 +62,14 @@ export default {
 		border-radius: 50%;
 		background-color: $accent-color;
 		filter: brightness(80%) opacity(1);
+		font-size: 2rem;
 	}
 	50% {
 		width: 0;
 		height: 0;
 		border-radius: 0;
 		filter: brightness(100%) opacity(.2);
+		font-size: 0rem;
 	}
 	100% {
 		width: 50px;
@@ -66,6 +77,7 @@ export default {
 		border-radius: 50%;
 		background-color: $accent-color;
 		filter: brightness(80%) opacity(1);
+		font-size: 2rem;
 	}
 }
 
@@ -91,11 +103,11 @@ export default {
 			margin-inline: 10px;
 		}
 		.ani1 {
-			animation: 2s ease-in-out infinite scaleup alternate ;
+			animation: 4s ease-in-out infinite scaleup alternate ;
 		}
 		.ani2 {
-			animation: 2s ease-in-out infinite scaleup alternate ;
-			animation-delay: .5s;
+			animation: 4s ease-in-out infinite scaleup alternate ;
+			animation-delay: 2s;
 		}
 	}
 	.movie {

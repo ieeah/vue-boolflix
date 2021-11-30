@@ -4,7 +4,9 @@
 			<Header @startSearching="performSearch"/>
 		</div>
 		<main>
-			<Body id="Body" :movies="movies" :tvShows="tvShows"/>
+			<Body id="Body"
+			:movies="movies"
+			:tvShows="tvShows"/>
 		</main>
 	</div>
 </template>
