@@ -13,8 +13,9 @@
 				<h2 v-else> {{movie.name}} </h2>
 				<p v-show="movie.original_title != movie.title">{{movie.original_title}}</p>
 				<p v-if="!flags.includes(movie.original_language)">{{ movie.original_language}}</p>
-				<img v-else :src="require(`@/assets/flags/${movie.original_language}.png`)" alt="">
+				<img class="flag" v-else :src="require(`@/assets/flags/${movie.original_language}.png`)" alt="">
 				<p>{{movie.vote_average}}</p>
+				<img :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`" :alt="movie.title || movie.name">
 			</div>
 		</div>
 	</div>
@@ -98,7 +99,7 @@ export default {
 		}
 	}
 	.movie {
-		img {
+		img.flag {
 			width: 50px;
 			height: 30px;
 		}
