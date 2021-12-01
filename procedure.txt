@@ -1,6 +1,5 @@
-eseguire la ricerca delle serie tv
-eseguire la ricerca dei film
-unire i risultati in un unico array
-ordinare i risultati in base al nome/titolo
-inviare l'array al componente Body per la stampa
+ordinare i risultati della ricerca in ordine alfabetico
+
+
+<i class="fas fa-star"></i>
 
