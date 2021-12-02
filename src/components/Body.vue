@@ -7,30 +7,29 @@
 				sii una capretta anche tu e scegli il tuo!
 			</h2>
 		</div>
-		<!-- <div v-if="moviesToShow.length == 0" class="loader">
+		<div v-if="moviesToShow.length == 0" class="loader">
 			<h2>Sono pronto a cercare il tuo film!</h2>
 			<div class="loading_animation">
 				<div class="ani1">cerca il film</div>
 				<div class="ani2">o la serie</div>
 			</div>
-		</div> -->
-
-
-		<div class="movies_list">
-			<h2>I nostri film!</h2>
-			<Movie
-				v-for="movie in moviesToShow"
-				:key="`${movie.id}`"
-				:title="movie.title"
-				:originalTitle="movie.original_title"
-				:originalLanguage="movie.original_language"
-				:voteAverage="movie.vote_average"
-				:posterPath="movie.poster_path"
-				:name="movie.name"
-				:overview="movie.overview"
-			/>
 		</div>
 
+
+		<div v-else class="cards">
+			<h2>Ecco quello che abbiamo trovato per te!</h2>
+			<Movie
+			v-for="movie in moviesToShow"
+			:key="`${movie.id}`"
+			:title="movie.title"
+			:originalTitle="movie.original_title"
+			:originalLanguage="movie.original_language"
+			:voteAverage="movie.vote_average"
+			:posterPath="movie.poster_path"
+			:name="movie.name"
+			:overview="movie.overview"
+		/>
+		</div>
 
 	</div>
 </template>
@@ -89,39 +88,40 @@ export default {
 	}
 }
 
-	.container_full {
-		@include flex-center;
-		height: calc(100vh - 72px);
-	}
+.container_full {
+	@include flex-center;
+	height: calc(100vh - 72px);
+}
 
-	.hero {
-		width: 100%;
-		min-height: 400px;
-		padding: 80px;
-		background-image: url("../assets/Caprette Tibetane/Hero/HeroSenzaScritte_Caprette-01.svg");
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center;
-		display: flex;
-		align-items: center;
-		h2 {
-			width: 35%;
-			position: relative;
-			left: 10%;
-		}
+.hero {
+	width: 100%;
+	min-height: 400px;
+	padding: 80px;
+	background-image: url("../assets/Caprette Tibetane/Hero/HeroSenzaScritte_Caprette-01.svg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	h2 {
+		width: 35%;
+		color: $primary-color;
 	}
+}
 
 	.loader {
+		display: flex;
+		align-items: center;
 		width: 100%;
-		height: calc(100vh - 72px);
-		@include flex-center;
+		padding: 80px;
+		color: $secondary-color;
 		h2 {
 			width: 20%;
-			padding-inline: auto;
+			justify-self: start;
 		}
 		.loading_animation {
 			@include flex-center;
-			width: 50%;
+			width: 80%;
 		}
 		.ani1,
 		.ani2 {
@@ -136,7 +136,19 @@ export default {
 		}
 	}
 
-	.movies_list {
-		padding-inline: $fsz-6;
+
+
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	perspective: 1000px;
+	padding-inline: $fsz-6;
+	h2 {
+		width: 100%;
+		color: $secondary-color;
+		font-weight: 400;
+		margin-block: 20px;
+		padding-left: 10px;
 	}
+}
 </style>

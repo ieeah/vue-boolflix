@@ -28,7 +28,7 @@
 }
 
 body {
-	min-height: 200vh;
+	min-height: 100vh;
 	line-height: 1.5;
 	background-color: $primary-color;
 	color: $clear-text;
@@ -69,7 +69,7 @@ h1,
 h2 {
 	text-transform: uppercase;
 	font-weight: 200;
-	color: $primary-color;
+	color: $secondary-color;
 	font: $primary-font;
 }
 
