@@ -18,28 +18,30 @@
 
 		<div v-else class="cards">
 			<h2>Ecco quello che abbiamo trovato per te!</h2>
-			<Movie
-			v-for="movie in moviesToShow"
-			:key="`${movie.id}`"
-			:title="movie.title"
-			:originalTitle="movie.original_title"
-			:originalLanguage="movie.original_language"
-			:voteAverage="movie.vote_average"
-			:posterPath="movie.poster_path"
-			:name="movie.name"
-			:overview="movie.overview"
-		/>
+			<MovieCard
+				v-for="movie in moviesToShow"
+				:key="`${movie.id}`"
+				:title="movie.title"
+				:name="movie.name"
+				:originalTitle="movie.original_title"
+				:originalLanguage="movie.original_language"
+				:voteAverage="movie.vote_average"
+				:posterPath="movie.poster_path"
+				:overview="movie.overview"
+			/>
 		</div>
 
 	</div>
 </template>
 
 <script>
-import Movie from '@/components/Movie.vue';
+// import Movie from '@/components/Movie.vue';
+import MovieCard from '@/components/MovieCard.vue';
 export default {
 	name: 'Body',
 	components: {
-		Movie,
+		MovieCard,
+		// Movie,
 	},
 	props: {
 		movies: Array,
