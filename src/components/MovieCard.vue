@@ -21,7 +21,17 @@
 						</span>
 				</div>
 				<p>{{overview}}</p>
+				<div class="cta">
+					<a v-if="title || name"
+						:href="`https://www.youtube.com/results?search_query=${title}+trailer+${selectedLanguage}`"
+						target="_blank"
+					>
+						<i class="fab fa-youtube"></i>
+					</a>
+					
+				</div>
 			</div>
+			
 		</div>
 		
 	</div>
@@ -36,6 +46,7 @@ export default {
 		name: String,
 		voteAverage: Number,
 		overview: String,
+		selectedLanguage: String,
 	},
 }
 </script>
@@ -51,6 +62,7 @@ export default {
 	.card_content {
 		@include _100;
 		position: relative;
+		transform-style: preserve-3d;
 		.card_img {
 			@include _100;
 			img {
@@ -64,26 +76,63 @@ export default {
 		}
 		.movie_details {
 			@include _100;
+			display: flex;
+			flex-direction: column;
 			position: absolute;
 			top: 0;
 			left: 0;
-			backdrop-filter: blur(10px);
 			padding: 20px;
-			background-color: rgba($color: black, $alpha: .7);
+			background-color: rgba($color: black, $alpha: .9);
 			opacity: 0;
-			transition: all .2s ease-in-out;
+			transition: transform .5s ease-in-out;
+			overflow: hidden;
 			&:hover {
 				opacity: 1;
 			}
 			h2 {
 				font-size: $fsz-5;
 				color: $primary-color;
+				margin-bottom: 10px;
 			}
 			.rating {
 				color: $secondary-color;
 			}
 			p {
 				font-size: $fsz-6;
+				margin-top: 10px;
+				flex-grow: 1;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				padding-right: $fsz-7;
+				&::-webkit-scrollbar {
+					background-color: transparent;
+					border-radius: 20px;/* roundness of the scroll thumb */
+					border: 0;
+				}
+				&::-webkit-scrollbar-thumb {
+					background-color: rgba($color: $secondary-color, $alpha: 0.7);
+					border-radius: 100px;
+					width: .5em;
+				}
+
+				@supports (scrollbar-color: red blue) {
+					* {
+						scrollbar-color: rgba(255, 255, 255, .2) $secondary-color; 
+						scrollbar-width: thin;
+					}
+				}
+			}
+			.cta {
+				width: calc(100% - 25px);
+				justify-self: end;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				margin-top: 10px;
+				a {
+					color: $youtube-red;
+				}
 			}
 		}
 	}

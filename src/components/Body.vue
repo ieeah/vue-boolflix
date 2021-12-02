@@ -28,6 +28,7 @@
 				:voteAverage="movie.vote_average"
 				:posterPath="movie.poster_path"
 				:overview="movie.overview"
+				:selectedLanguage="selectedLanguage"
 			/>
 		</div>
 
@@ -35,27 +36,21 @@
 </template>
 
 <script>
-// import Movie from '@/components/Movie.vue';
 import MovieCard from '@/components/MovieCard.vue';
 export default {
 	name: 'Body',
 	components: {
 		MovieCard,
-		// Movie,
 	},
 	props: {
 		movies: Array,
 		tvShows: Array,
+		selectedLanguage: String,
 	},
 	computed: {
 		moviesToShow() {
 			const lista = [];
 			lista.push(...this.movies, ...this.tvShows);
-			// lista.forEach(element => {
-			// 	if (element.name != '' || element.name != undefined) {
-			// 		element.title = element.name;
-			// 	}
-			// });
 			return lista ;
 		},
 	},
@@ -150,7 +145,7 @@ export default {
 		color: $secondary-color;
 		font-weight: 400;
 		margin-block: 20px;
-		padding-left: 10px;
+		margin-left: 10px;
 	}
 }
 </style>

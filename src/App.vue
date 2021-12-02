@@ -1,12 +1,15 @@
 <template>
 	<div id="app">
 		<div class="top_header">
-			<Header @startSearching="performSearch"/>
+			<Header @startSearching="performSearch"
+					@searchReset="resetSearch"
+					@changedLanguage="setLanguage"/>
 		</div>
 		<main>
 			<Body id="Body"
 			:movies="movies"
-			:tvShows="tvShows"/>
+			:tvShows="tvShows"
+			:selectedLanguage="selectedLanguage"/>
 		</main>
 	</div>
 </template>
@@ -28,24 +31,28 @@ export default {
 			tvShows: [],
 			movies: [],
 			BabyK : 'ca6604e774b1404964077082d0e1bb94',
+			searchIsOff: true,
+			selectedLanguage: 'it',
 		};
 	},
 	methods: {
 		performSearch(title) {
+			this.query = title;
+			this.searchIsOff = false;
 			let one = "https://api.themoviedb.org/3/search/movie"
 			let two = "https://api.themoviedb.org/3/search/tv"
 			const requestOne = axios.get(one, {
 				params: {
 					api_key: this.BabyK,
 					query: title,
-					language: 'it',
+					language: this.selectedLanguage,
 				}
 			});
 			const requestTwo = axios.get(two, {
 				params: {
 					api_key: this.BabyK,
 					query: title,
-					language: 'it',
+					language: this.selectedLanguage,
 				}
 			});
 
@@ -62,6 +69,14 @@ export default {
 			})
 			this.moviesToShow = [],
 			this.moviesToShow.push(...this.movies, ...this.tvShows);
+		},
+		resetSearch() {
+			this.movies = [];
+			this.moviesToShow = [];
+			this.tvShows = [];
+		},
+		setLanguage(lang) {
+			this.selectedLanguage = lang;
 		},
 	},
 }
