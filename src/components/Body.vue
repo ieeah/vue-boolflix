@@ -1,18 +1,24 @@
 <template>
 	<div class="container-full">
 
-
-		<div v-if="moviesToShow.length == 0" class="loader">
+		<div class="hero">
+			<h2>
+				Le caprette tibetane guardano ottimi film, <br>
+				sii una capretta anche tu e scegli il tuo!
+			</h2>
+		</div>
+		<!-- <div v-if="moviesToShow.length == 0" class="loader">
 			<h2>Sono pronto a cercare il tuo film!</h2>
 			<div class="loading_animation">
 				<div class="ani1">cerca il film</div>
 				<div class="ani2">o la serie</div>
 			</div>
-		</div>
+		</div> -->
 
 
-		<div v-else class="movies_list">
-			<Movie class="movie"
+		<div class="movies_list">
+			<h2>I nostri film!</h2>
+			<Movie
 				v-for="movie in moviesToShow"
 				:key="`${movie.id}`"
 				:title="movie.title"
@@ -21,6 +27,7 @@
 				:voteAverage="movie.vote_average"
 				:posterPath="movie.poster_path"
 				:name="movie.name"
+				:overview="movie.overview"
 			/>
 		</div>
 
@@ -87,6 +94,23 @@ export default {
 		height: calc(100vh - 72px);
 	}
 
+	.hero {
+		width: 100%;
+		min-height: 400px;
+		padding: 80px;
+		background-image: url("../assets/Caprette Tibetane/Hero/HeroSenzaScritte_Caprette-01.svg");
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		display: flex;
+		align-items: center;
+		h2 {
+			width: 35%;
+			position: relative;
+			left: 10%;
+		}
+	}
+
 	.loader {
 		width: 100%;
 		height: calc(100vh - 72px);
@@ -110,5 +134,9 @@ export default {
 			animation: 4s ease-in-out infinite scaleup alternate ;
 			animation-delay: 2s;
 		}
+	}
+
+	.movies_list {
+		padding-inline: $fsz-6;
 	}
 </style>

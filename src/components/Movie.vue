@@ -49,6 +49,11 @@ export default {
 
 <style scoped lang="scss">
 @import '@/styles/globals.scss';
+.movie {
+	width: calc(100% / 3);
+	height: 400px;
+	background-color: red;
+}
 
 .flag {
 	width: 50px;
@@ -59,5 +64,6 @@ export default {
 	display: flex;
 	align-items: center;
 	color: $accent-color;
+	font-size: .8rem;
 }
 </style>
