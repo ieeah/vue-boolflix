@@ -9,16 +9,19 @@
 			<div class="movie_details">
 				<h2>{{title}} {{name}}</h2>
 				<div class="rating">
-						<span v-for="(element, i) in Math.ceil(voteAverage / 2)"
-							:key="`rating${i}`"
-						>
-							<i class="fas fa-star"></i>
-						</span>
-						<span v-for="(element, i) in 5 - (Math.ceil(voteAverage / 2))"
-							:key="`emptyRating${i}`"
-						>
-							<i class="far fa-star"></i>
-						</span>
+					<span v-for="(element, i) in Math.ceil(voteAverage / 2)"
+						:key="`rating${i}`"
+					>
+						<i class="fas fa-star"></i>
+					</span>
+					<span v-for="(element, i) in 5 - (Math.ceil(voteAverage / 2))"
+						:key="`emptyRating${i}`"
+					>
+						<i class="far fa-star"></i>
+					</span>
+					<div class="popularity">
+						popularity: {{popularity}}
+					</div>
 				</div>
 				<p>{{overview}}</p>
 				<div class="cta">
@@ -47,6 +50,7 @@ export default {
 		voteAverage: Number,
 		overview: String,
 		selectedLanguage: String,
+		popularity: Number,
 	},
 }
 </script>
@@ -96,6 +100,10 @@ export default {
 			}
 			.rating {
 				color: $secondary-color;
+				.popularity {
+					font-size: $fsz-6;
+					color: $primary-color;
+				}
 			}
 			p {
 				font-size: $fsz-6;

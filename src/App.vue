@@ -3,13 +3,15 @@
 		<div class="top_header">
 			<Header @startSearching="performSearch"
 					@searchReset="resetSearch"
-					@changedLanguage="setLanguage"/>
+					@changedLanguage="setLanguage"
+			/>
 		</div>
 		<main>
 			<Body id="Body"
 			:movies="movies"
 			:tvShows="tvShows"
-			:selectedLanguage="selectedLanguage"/>
+			:selectedLanguage="selectedLanguage"
+		/>
 		</main>
 	</div>
 </template>

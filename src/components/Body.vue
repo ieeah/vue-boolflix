@@ -28,6 +28,7 @@
 				:voteAverage="movie.vote_average"
 				:posterPath="movie.poster_path"
 				:overview="movie.overview"
+				:popularity="movie.popularity"
 				:selectedLanguage="selectedLanguage"
 			/>
 		</div>
@@ -51,14 +52,7 @@ export default {
 		moviesToShow() {
 			const totalMovies = [];
 			totalMovies.push(...this.movies, ...this.tvShows);
-			totalMovies.sort((a, b) => {
-				if (a.title < b.title) {
-					return -1;
-				} else if (a.region > b.region) {
-					return 1;
-				}
-				return 0;
-})
+			totalMovies.sort((a, b) => Math.ceil(b.popularity) - Math.ceil(a.popularity));
 			return totalMovies ;
 		},
 	},

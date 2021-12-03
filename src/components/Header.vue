@@ -51,90 +51,89 @@ export default {
 <style scoped lang="scss">
 @import '@/styles/globals.scss';
 header {
-		display: flex;
-		width: 100vw;
-		justify-content: space-between;
-		align-items: center;
-		background-color: $primary-color;
-		height: 72px;
-		padding: $fsz-6;
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 1;
+	display: flex;
+	width: 100vw;
+	justify-content: space-between;
+	align-items: center;
+	background-color: $primary-color;
+	height: 72px;
+	padding: $fsz-6;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
 
-		a {
-			text-decoration: none;
-			display: flex;
-			align-items: center;
-			img {
-				fill: $secondary-color;
+	a {
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		img {
+			transform: translateX(-10px);
+		}
+	}
+	.search-bar {
+		width: 45%;
+		height: 100%;
+		@include flex-center;
+
+		select {
+			width: 100px;
+			height: 40px;
+			background-color: $primary-color;
+		}
+		select,
+		input {
+			border-radius: 10px;
+			color: $secondary-color;
+			border: none;
+			outline: 2px solid $secondary-color;
+			&:hover,
+			&:active,
+			&:focus {
+				outline-offset: 3px;
 			}
 		}
-		.search-bar {
-			width: 45%;
-			height: 100%;
+
+		select,
+		input,
+		.btn {
+			padding-inline: 10px;
+			padding-block: 5px;
+			height: 40px;
+			font-size: $fsz-5;
+		}
+
+		input {
+			width: 60%;
+			position: relative;
+			margin-inline: 20px;
+		}
+
+		.btn {
+			width: 13%;
+			background-color: $secondary-color;
+			color: $primary-color;
+			cursor: pointer;
+			border-radius: 3px;
+			font-size: $fsz-6;
+			font-weight: normal;
 			@include flex-center;
-
-			select {
-				width: 100px;
-				height: 40px;
-				background-color: $primary-color;
+			i {
+				margin-right: 5px;
 			}
-			select,
-			input {
-				border-radius: 10px;
+			&:hover {
+				opacity: .6;
+			}
+			&.reset {
+				background-color: rgba($color: $secondary-color, $alpha: .4);
 				color: $secondary-color;
-				border: none;
-				outline: 2px solid $secondary-color;
-				&:hover,
-				&:active,
-				&:focus {
-					outline-offset: 3px;
-				}
-			}
-
-			select,
-			input,
-			.btn {
-				padding-inline: 10px;
-				padding-block: 5px;
-				height: 40px;
-				font-size: $fsz-5;
-			}
-
-			input {
-				width: 60%;
-				position: relative;
-				margin-inline: 20px;
-			}
-
-			.btn {
-				width: 13%;
-				background-color: $secondary-color;
-				color: $primary-color;
-				cursor: pointer;
-				border-radius: 3px;
-				font-size: $fsz-6;
-				font-weight: normal;
-				@include flex-center;
-				i {
-					margin-right: 5px;
-				}
+				margin-left: 20px;
 				&:hover {
-					opacity: .6;
-				}
-				&.reset {
-					background-color: rgba($color: $secondary-color, $alpha: .4);
-					outline: 1px solid $accent-color;
-					color: $secondary-color;
-					margin-left: 20px;
-					&:hover {
-						background-color: rgba($color: $secondary-color, $alpha: .7);
-						color: $primary-color;
-					}
+					background-color: rgba($color: $secondary-color, $alpha: 1);
+					color: $primary-color;
 				}
 			}
 		}
 	}
+}
 </style>
