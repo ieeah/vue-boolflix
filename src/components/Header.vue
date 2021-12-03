@@ -77,9 +77,9 @@ header {
 			@include flex-center;
 
 			select {
-				width: 80px;
+				width: 100px;
 				height: 40px;
-				border-radius: 10px;
+				background-color: $primary-color;
 			}
 			select,
 			input {
@@ -100,21 +100,23 @@ header {
 				padding-inline: 10px;
 				padding-block: 5px;
 				height: 40px;
-				font-size: 1.2rem;
+				font-size: $fsz-5;
 			}
 
 			input {
-				width: 65%;
+				width: 60%;
 				position: relative;
 				margin-inline: 20px;
 			}
 
 			.btn {
-				width: 25%;
+				width: 13%;
 				background-color: $secondary-color;
 				color: $primary-color;
 				cursor: pointer;
-				border-radius: 5px;
+				border-radius: 3px;
+				font-size: $fsz-6;
+				font-weight: normal;
 				@include flex-center;
 				i {
 					margin-right: 5px;

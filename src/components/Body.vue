@@ -49,9 +49,17 @@ export default {
 	},
 	computed: {
 		moviesToShow() {
-			const lista = [];
-			lista.push(...this.movies, ...this.tvShows);
-			return lista ;
+			const totalMovies = [];
+			totalMovies.push(...this.movies, ...this.tvShows);
+			totalMovies.sort((a, b) => {
+				if (a.title < b.title) {
+					return -1;
+				} else if (a.region > b.region) {
+					return 1;
+				}
+				return 0;
+})
+			return totalMovies ;
 		},
 	},
 }
