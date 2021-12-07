@@ -86,12 +86,13 @@ export default {
 			top: 0;
 			left: 0;
 			padding: 20px;
-			background-color: rgba($color: black, $alpha: .9);
+			background-color: rgba($color: black, $alpha: .6);
 			opacity: 0;
 			transition: transform .5s ease-in-out;
 			overflow: hidden;
 			&:hover {
 				opacity: 1;
+				backdrop-filter: blur(5px);
 			}
 			h2 {
 				font-size: $fsz-5;
